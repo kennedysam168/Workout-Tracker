@@ -23,7 +23,7 @@ router.get("/api/workouts", (req, res) => {
         });
 })
 
-router.put("/api/workouts:id", (req, res) => {
+router.put("/api/workouts/:id", ({body, params}, res) => {
     Workout.findByIdAndUpdate(params.id,{$push:{exercises: body}})
     .then(data => {
         res.json(data);
